@@ -11,6 +11,7 @@
   a.sub = 1:6,
   plot.single = FALSE,
   asset.name,
+  asset.variable,
   colorset = c("royalblue", "dimgray", "olivedrab", "firebrick", "goldenrod",
     "mediumorchid", "deepskyblue", "chocolate", "darkslategray"),
   legend.loc = "topleft",
@@ -67,6 +68,8 @@ individual asset's factor model. The type of plot is given by
 \item{asset.name}{name of the individual asset to be plotted. Is necessary
 if \code{x} contains multiple asset fits and \code{plot.single=TRUE}.}
 
+\item{asset.variable}{the name of asset variable.}
+
 \item{colorset}{color palette to use for all the plots. The 1st element will
 be used for individual time series plots or the 1st object plotted, the 2nd
 element for the 2nd object in the plot and so on.}
@@ -76,7 +79,7 @@ element for the 2nd object in the plot and so on.}
 "right", or "center". Default is "bottomright". Use \code{legend.loc=NULL}
 to suppress the legend.}
 
-\item{las}{one of {0, 1, 2, 3} to set the direction of axis labels, same as
+\item{las}{one of \code{0, 1, 2, 3} to set the direction of axis labels, same as
 in \code{plot}. Default is 1.}
 
 \item{lwd}{set the line width, same as in \code{\link{plot}}. Default is 2.}
@@ -110,29 +113,30 @@ plot.ffm can infer \code{asset.name} without user input.
 }
 \examples{
 
-# load data 
+\dontrun{
+# load data
 data(stocksCRSP)
 data(factorsSPGMI)
 
 stocks_factors <- selectCRSPandSPGMI(stocks = stocksCRSP, factors = factorsSPGMI,
-                                    dateSet = c("2006-01-31", "2010-12-31"), 
-                                    stockItems = c("Date", "TickerLast", 
-                                                   "CapGroup", "Sector", 
+                                    dateSet = c("2006-01-31", "2010-12-31"),
+                                    stockItems = c("Date", "TickerLast",
+                                                   "CapGroup", "Sector",
                                                    "Return", "Ret13WkBill",
                                                    "mktIndexCRSP"),
-                                    factorItems = c("BP", "LogMktCap", "SEV"), 
+                                    factorItems = c("BP", "LogMktCap", "SEV"),
                                     capChoice = "SmallCap",
                                     Nstocks = 20)
 
 # fit a fundamental factor model with style variables BP and LogMktCap
 
-fit.style <- fitFfm(data = stocks_factors, 
-                           asset.var = "TickerLast", 
-                           ret.var = "Return", 
-                           date.var = "Date", 
+fit.style <- fitFfm(data = stocks_factors,
+                           asset.var = "TickerLast",
+                           ret.var = "Return",
+                           date.var = "Date",
                            exposure.vars = c("BP", "LogMktCap")
                            )
-                           
+
 # For group plots (default), one can select plot option from prompt menu.
 # The menu is repeated to produce multiple plots based on the same fit
 
@@ -151,6 +155,7 @@ plot(fit.style, which = 6)
 # This will display a histogram of residuals from the asset's factor model fit
 
 plot(fit.style, plot.single = TRUE, asset.name = "ALCO", which = 12)
+}
 
 }
 \seealso{

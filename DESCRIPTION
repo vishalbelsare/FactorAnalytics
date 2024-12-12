@@ -1,54 +1,54 @@
 Package: FactorAnalytics
 Type: Package
 Title: Factor Analytics for Asset Return Data
-Version: 2.2.7
-Date: 2021-10-31
+Version: 2.4.2
+Date: 2024-12-12
 Author: Eric Zivot, Doug Martin, Sangeetha
      Srinivasan, Avinash Acharya, Yi-An Chen,
      Mido Shammaa, Lingjie Yi, Kirk Li, and
      Justin M. Shea
-Maintainer: Justin M. Shea <jshea@roosevelt.edu>
-Description: Linear factor model fitting for asset returns (three major types-
-    time series, fundamental and statistical factor models); related risk
-    (volatility, VaR and ES) and performance attribution (factor-contributed vs
-    idiosyncratic returns); tabular displays of risk and performance reports;
-    factor model Monte Carlo, single and multiple imputation methods for 
-    simulating returns and backfilling unequal histories. The package authors 
-    would like to thank S&P GLOBAL MARKET INTELLIGENCE for kindly contributing 
-    fundamental data on 300 publicly traded companies to this open source package. 
-    Commonly referred to as "alpha factors" or "scores", the variables are 
-    generously provided for educational use with functions contained in this 
-    FactorAnalytics package. 
+Maintainer: Justin M. Shea <jshea01@uic.edu>
+Description: This package combines the work of several researchers focused on
+  asset pricing using linear factor models, spanning the course of more than a 
+  decade. While the project has matured on github and versions of it are used in 
+  production at varous investment firms, we are finally adding it to CRAN for
+  ease of access to a wider R user base. The package contains linear factor models 
+  for fitting asset returns (three major types-time series, fundamental and statistical factor models); 
+  related risk (volatility, VaR and ES) and performance attribution 
+  (factor-contributed vs idiosyncratic returns); tabular displays of risk and 
+  performance reports; factor model Monte Carlo, single and multiple imputation 
+  methods for simulating returns and backfilling unequal histories.
 License: GPL-2
 Depends: 
     R (>= 3.5)
 Imports:
-    data.table,
-    xts,
-    zoo,
-    PerformanceAnalytics,
-    leaps,
-    lars,
-    sandwich,
-    lattice,
-    sn,
     boot,
-    foreach,
-    parallel,
+    data.table,
     doSNOW,
+    foreach,
+    lars,
+    lattice,
+    leaps,
+    methods,
+    parallel,
+    PerformanceAnalytics,
     RCurl,
+    RobStatTM,
+    robustbase,
+    sandwich,
+    sn,
     tseries,
-	robustbase,
-	RobStatTM
+    xts,
+    zoo
 Suggests:
-    R.rsp, 
-    tinytest,
     corrplot,
+    HH,
     lmtest,
+    R.rsp,
     rugarch,
     strucchange,
-    HH
+    tinytest
 VignetteBuilder: R.rsp
 URL: https://github.com/braverock/FactorAnalytics
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 Encoding: UTF-8
